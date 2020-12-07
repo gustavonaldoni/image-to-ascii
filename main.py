@@ -2,7 +2,7 @@ from converter.ascii_converter import ASCIIConverter
 from PIL import Image
 
 
-original_image_name = 'apple'
+original_image_name = 'mises'
 
 image = Image.open(f'./{original_image_name}.jpg')
 
