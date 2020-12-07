@@ -7,10 +7,15 @@ class ASCIIConverter(GrayscaleConverter, ASCIIImageSaver):
 
     ASCII_CHARACTERS = '@#$%?*+;:,.'
 
+    def get_width_and_height(self, image):
+        width, height = image.size
+
+        return (width, height)
+
     def resize_image(self, image, new_width=100):
         image = image.copy()
 
-        width, height = image.size
+        width, height = self.get_width_and_height(image)
         aspect_ratio = height / width
 
         new_height = round(width * aspect_ratio)
@@ -30,10 +35,13 @@ class ASCIIConverter(GrayscaleConverter, ASCIIImageSaver):
 
         return formatted
 
-    def convert_to_ascii(self, image, path, new_width=100):
+    def convert_to_ascii(self, image, path, new_width=None):
+        if new_width is None:
+            original_width, original_height = self.get_width_and_height(image)
+            new_width = round(original_width * 2)
+
         resized_image = self.resize_image(image, new_width)
         grayscale_image = self.convert_to_grayscale(resized_image)
-
         ascii_characters = self.get_ascii_characters(grayscale_image)
         formatted_text = self.format_ascii_characters(ascii_characters, new_width)
 
