@@ -1,28 +1,12 @@
 import PIL.Image
 from converter.grayscale_converter import GrayscaleConverter
 from converter.image_saver import ASCIIImageSaver
+from converter.image_resizer import ImageResizer
 
 
-class ASCIIConverter(GrayscaleConverter, ASCIIImageSaver):
+class ASCIIConverter(GrayscaleConverter, ASCIIImageSaver, ImageResizer):
 
     ASCII_CHARACTERS = '@#$%?*+;:,.'
-
-    def get_width_and_height(self, image):
-        width, height = image.size
-
-        return (width, height)
-
-    def resize_image(self, image, new_width=100):
-        image = image.copy()
-
-        width, height = self.get_width_and_height(image)
-        aspect_ratio = height / width
-
-        new_height = round(width * aspect_ratio)
-
-        resized_image = image.resize((new_width, new_height))
-
-        return resized_image
 
     def get_ascii_characters(self, image):
         pixels = image.getdata()
