@@ -18,11 +18,7 @@ class ImageResizer:
             width, height = self.get_width_and_height(image)
             aspect_ratio = height / width
 
-            if new_width < width:
-                new_height = round(new_width * aspect_ratio)
-
-            else:
-                new_height = round(width * aspect_ratio)
+            new_height = round(new_width * aspect_ratio * 0.45)
 
             try:
                 resized_image = image.resize((new_width, new_height))
