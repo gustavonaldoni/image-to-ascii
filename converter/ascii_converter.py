@@ -2,12 +2,14 @@ import PIL.Image
 from converter.grayscale_converter import GrayscaleConverter
 from converter.image_resizer import ImageResizer
 from confirmation_messages.success_messages import SuccessMessages
+from confirmation_messages.error_messages import ErrorMessages
 
 
 class ASCIIConverter(GrayscaleConverter, ImageResizer):
 
     def __init__(self):
         self.success_messages = SuccessMessages()
+        self.error_messages = ErrorMessages()
     
     ASCII_CHARACTERS = '@#$%?*+;:,.'
 
@@ -18,7 +20,7 @@ class ASCIIConverter(GrayscaleConverter, ImageResizer):
             self.success_messages.show_success_message('ASCII characters gotten')
 
         except Exception as e:
-            pass
+            self.error_messages.show_error_message('getting ASCII characters', e)
 
         return characters
 
@@ -26,8 +28,9 @@ class ASCIIConverter(GrayscaleConverter, ImageResizer):
         try:
             formatted = '\n'.join(ascii_characters[i:(i + new_width)] for i in range(0, len(ascii_characters), new_width))
             self.success_messages.show_success_message('ASCII characters successfully formatted')
+        
         except Exception as e:
-            pass
+            self.error_messages.show_error_message('formatting ASCII characters', e)
 
         return formatted
 

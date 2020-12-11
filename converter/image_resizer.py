@@ -1,11 +1,13 @@
 from PIL import Image
 from confirmation_messages.success_messages import SuccessMessages
+from confirmation_messages.error_messages import ErrorMessages
 
 
 class ImageResizer:
 
     def __init__(self):
         self.success_messages = SuccessMessages()
+        self.error_messages = ErrorMessages()
 
     def get_width_and_height(self, image):
         width, height = image.size
@@ -25,6 +27,6 @@ class ImageResizer:
                 self.success_messages.show_success_message(f'Image resized from {width}x{height} px to {new_width}x{new_height} px')
                 
             except Exception as e:
-                pass
+                self.error_messages.show_error_message('resizing image', e)
 
             return resized_image
