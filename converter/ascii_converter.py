@@ -1,10 +1,10 @@
 import PIL.Image
 from converter.grayscale_converter import GrayscaleConverter
-from converter.image_saver import ASCIIImageSaver
 from converter.image_resizer import ImageResizer
 from confirmation_messages.success_messages import SuccessMessages
 
-class ASCIIConverter(GrayscaleConverter, ASCIIImageSaver, ImageResizer):
+
+class ASCIIConverter(GrayscaleConverter, ImageResizer):
 
     def __init__(self):
         self.success_messages = SuccessMessages()
@@ -31,16 +31,10 @@ class ASCIIConverter(GrayscaleConverter, ASCIIImageSaver, ImageResizer):
 
         return formatted
 
-    def convert_to_ascii(self, image, path, new_width=None):
-        if new_width is None:
-            original_width, original_height = self.get_width_and_height(image)
-            new_width = round(original_width * 2)
-
+    def convert_to_ascii(self, image, new_width=200):
         resized_image = self.resize_image(image, new_width)
         grayscale_image = self.convert_to_grayscale(resized_image)
         ascii_characters = self.get_ascii_characters(grayscale_image)
         formatted_text = self.format_ascii_characters(ascii_characters, new_width)
-
-        self.save_image(formatted_text, path)
 
         return formatted_text
