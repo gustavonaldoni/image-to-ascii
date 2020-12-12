@@ -4,12 +4,45 @@ from confirmation_messages.error_messages import ErrorMessages
 
 
 class GrayscaleConverter:
+    """
+    The GrayscaleConverter object allows you to convert
+    a image to a grayscale version easily
+
+
+    Attributes
+    ----------
+
+    success_messages : SuccessMessages
+        Object that contains the success messages templates
+
+    error_messages : ErrorMessages
+        Object that contains the error messages templates
+
+    """
 
     def __init__(self):
         self.success_messages = SuccessMessages()
         self.error_messages = ErrorMessages()
 
     def convert_to_grayscale(self, image):
+        """
+        Convert a given image to a grayscale version
+
+
+        Parameters
+        ----------
+
+        image : PIL Image Object
+            The image to be converted to grayscale
+
+        
+        Returns
+        -------
+
+        converted_image : PIL Image Object
+            The image already converted to grayscale
+
+        """
         image = image.copy()
 
         try:
