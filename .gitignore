@@ -130,8 +130,6 @@ dmypy.json
 
 __pychache__/
 
-examples/
-
 *.txt
 *.jpg
 *.jpeg
