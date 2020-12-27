@@ -1,5 +1,7 @@
 # image-to-ascii
-A repository to simply allow you to transform an image to an ASCII text.
+Have you already wondered about how can a image be transformed into a text file by only one click? So this repository is for you.
+
+With just 8 lines of code you can transform **any** image you want into a single and beautiful text file, making the ***integration to bigger projects so easy.***
 
 # Installation
 ```bash
@@ -7,34 +9,35 @@ git clone https://github.com/gustavonaldoni/image-to-ascii.git
 
 cd image-to-ascii
 
-pip install Pillow #WINDOWS
-pip3 install Pillow #MAC
+pip install Pillow # ON WINDOWS
+pip3 install Pillow # ON MAC
 ```
+
+# Requirements
+- Python 3 or above
+- **Pillow** - Python library
+
 # Usage
 
 ### Command Line
 ```bash
-python main.py <input_image_path> <output_txt_path> #WINDOWS
-python3 main.py <input_image_path> <output_txt_path> #MAC
+python main.py <input_image_path> <output_txt_path> # ON WINDOWS
+python3 main.py <input_image_path> <output_txt_path> # ON MAC
 ```
 
 ### Code
 
     from converter.ascii_converter import ASCIIConverter
 	from converter.image_saver import ASCIIImageSaver
-	from  PIL  import Image
+	from PIL import Image
 	
 	image = Image.open('./examples/snake.png')
 	
-	converter =  ASCIIConverter()
+	converter = ASCIIConverter()
 	new_image = converter.convert_to_ascii(image)
 	
-	saver =  ASCIIImageSaver()
+	saver = ASCIIImageSaver()
 	saver.save_image(new_image, './examples/snake.txt')
-
-# Requirements
-- Python 3 or above
-- **Pillow** - Python library
 
 # Example
 
