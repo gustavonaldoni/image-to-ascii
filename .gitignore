@@ -129,10 +129,3 @@ dmypy.json
 .pyre/
 
 __pychache__/
-
-examples/
-
-*.txt
-*.jpg
-*.jpeg
-*.png
