@@ -1,27 +1,47 @@
 # image-to-ascii
 A repository to simply allow you to transform an image to an ASCII text.
 
-# Installation & Usage
+# Installation
 ```bash
-
 git clone https://github.com/gustavonaldoni/image-to-ascii.git
 
 cd image-to-ascii
 
-pip3 install Pillow (for Mac)
-pip install Pillow (for Windows)
-
-python3 main.py image_file_path(optional) image_width(optional)
+pip install Pillow #WINDOWS
+pip3 install Pillow #MAC
 ```
+# Usage
+
+### Command Line
+```bash
+python main.py <input_image_path> <output_txt_path> #WINDOWS
+python3 main.py <input_image_path> <output_txt_path> #MAC
+```
+
+### Code
+
+    from converter.ascii_converter import ASCIIConverter
+	from converter.image_saver import ASCIIImageSaver
+	from  PIL  import Image
+	
+	image = Image.open('./examples/snake.png')
+	
+	converter =  ASCIIConverter()
+	new_image = converter.convert_to_ascii(image)
+	
+	saver =  ASCIIImageSaver()
+	saver.save_image(new_image, './examples/snake.txt')
+
 # Requirements
 - Python 3 or above
 - **Pillow** - Python library
 
 # Example
-## Input 
+
+### Input 
 <img src="examples/snake.png"/>
 
-## Output
+### Output
 ```txt
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@..:++,.@@@@@@@@@@@.,+;..@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@..;*%$$%*,.@@@@@@@@@@@.,+%$%+..@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
