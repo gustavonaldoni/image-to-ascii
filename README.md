@@ -1,4 +1,4 @@
-# image-to-ascii
+# Image to ASCII
 Have you already wondered about how can a image be transformed into a text file by only one click? So this repository is for you.
 
 With just 8 lines of code you can transform **any** image you want into a single and beautiful text file, making the ***integration to bigger projects so easy.***
