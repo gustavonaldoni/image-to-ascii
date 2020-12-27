@@ -1,5 +1,5 @@
 # image-to-ascii
-A repository to simply allow you to transform a image to a ASCII text.
+A repository to simply allow you to transform an image to an ASCII text.
 
 # Installation & Usage
 ```bash
@@ -8,12 +8,13 @@ git clone https://github.com/gustavonaldoni/image-to-ascii.git
 
 cd image-to-ascii
 
-pip3 install Pilllow
+pip3 install Pillow (for Mac)
+pip install Pillow (for Windows)
 
 python3 main.py image_file_path(optional) image_width(optional)
 ```
 # Requirements
-- python3
+- Python 3 or above
 - **Pillow** - Python library
 
 # Example
