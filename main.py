@@ -1,14 +1,16 @@
 from converter.ascii_converter import ASCIIConverter
 from converter.image_saver import ASCIIImageSaver
+from converter.image_resizer import ImageResizer
 from PIL import Image
 
 
-original_image_name = 'knife'
 
-image = Image.open(f'./examples/{original_image_name}.jpg')
+image = Image.open('examples/snake.png')
 
 converter = ASCIIConverter()
-new_image = converter.convert_to_ascii(image)
+resizer = ImageResizer()
+resized_image = resizer.resize_image(image)
+new_image = converter.convert_to_ascii(resized_image)
 
 saver = ASCIIImageSaver()
-saver.save_image(new_image, f'./examples/{original_image_name}.txt')
+saver.save_image(new_image, 'snake.txt')
